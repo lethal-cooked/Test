@@ -369,6 +369,7 @@
             });
 
             // Channel/Content Display
+            const contentDiv = document.getElementById('content');
             const channelContent = {
                 'metasploit': { explanation: 'Metasploit: Penetration testing framework.', installation: 'apt install metasploit-framework', usage: 'msfconsole' },
                 'aircrack-ng': { explanation: 'Aircrack-ng: WiFi security tool.', installation: 'apt install aircrack-ng', usage: 'airmon-ng start wlan0' },
@@ -393,7 +394,7 @@
 
             function showContent(channel) {
                 const data = channelContent[channel] || { explanation: 'Tool not documented yet.', installation: 'N/A', usage: 'N/A' };
-                document.getElementById('content').innerHTML = `
+                contentDiv.innerHTML = `
                     <h3>${channel.replace(/-/g, ' ').toUpperCase()}</h3>
                     <p><strong>Explanation:</strong> ${data.explanation}</p>
                     <p><strong>Installation:</strong> ${data.installation}</p>
