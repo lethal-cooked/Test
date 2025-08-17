@@ -9,7 +9,7 @@
             font-family: 'Courier New', monospace;
             margin: 0;
             background: #000;
-            color: #00ff00; /* Neon green for a hacker vibe */
+            color: #00ff00;
             overflow: hidden;
         }
         canvas {
@@ -279,7 +279,6 @@
             <a href="#" onclick="showContent('gpg')"># gpg</a>
             <a href="#" onclick="showContent('cyberchef')"># cyberchef</a>
         </div>
-        <!-- Add more categories like Shop, DIY, etc., as needed -->
     </div>
     <div id="main-content">
         <div id="content"></div>
@@ -358,16 +357,16 @@
             animate();
 
             // Sidebar Toggle
-            function openNav() {
-                document.getElementById("sidebar").classList.add("open");
-                document.getElementById("main-content").classList.add("shift");
-            }
-
-            function closeNav() {
-                document.getElementById("sidebar").classList.remove("open");
-                document.getElementById("main-content").classList.remove("shift");
-            }
-            document.getElementById("toggle-sidebar").addEventListener("click", openNav);
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            document.getElementById('toggle-sidebar').addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+                mainContent.classList.toggle('shift');
+            });
+            document.querySelector('.closebtn').addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                mainContent.classList.remove('shift');
+            });
 
             // Channel/Content Display
             const channelContent = {
@@ -390,7 +389,6 @@
                 'openssl': { explanation: 'OpenSSL: Encryption tool.', installation: 'apt install openssl', usage: 'openssl enc -aes-256-cbc' },
                 'gpg': { explanation: 'GPG: Encryption/signing.', installation: 'apt install gnupg', usage: 'gpg --gen-key' },
                 'cyberchef': { explanation: 'CyberChef: Crypto analyzer.', installation: 'Online tool', usage: 'Visit gchq.github.io/CyberChef' }
-                // Expand with more tools as needed
             };
 
             function showContent(channel) {
@@ -401,7 +399,8 @@
                     <p><strong>Installation:</strong> ${data.installation}</p>
                     <p><strong>Usage:</strong> ${data.usage}</p>
                 `;
-                closeNav();
+                sidebar.classList.remove('open');
+                mainContent.classList.remove('shift');
             }
 
             // Audio Upload Handling
@@ -415,8 +414,8 @@
                     audioPlayer.querySelector('source').setAttribute('src', url);
                     audioPlayer.load();
                     audioPlayer.play().catch(error => {
-                        console.log('Autoplay blocked, play manually:', error);
-                        alert('Click play on the audio player to start.');
+                        console.log('Autoplay blocked:', error);
+                        alert('Click the play button to start the music.');
                     });
                 } else {
                     alert('Please upload a file named "men.mp3".');
@@ -474,4 +473,4 @@
         });
     </script>
 </body>
-                                                                </html>
+</html>
