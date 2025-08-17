@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channel Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #1a1a1a; color: #fff; }
+        .category { margin-bottom: 20px; }
+        .category h2 { color: #00ff00; }
+        .channel-list { list-style: none; padding: 0; }
+        .channel-list li { margin: 10px 0; }
+        .channel-list a { color: #00ffff; text-decoration: none; }
+        .channel-list a:hover { text-decoration: underline; }
+        #content { margin-top: 20px; padding: 15px; background-color: #2a2a2a; display: none; }
+    </style>
+</head>
+<body>
+    <div class="category">
+        <h2>Server Config</h2>
+        <ul class="channel-list">
+            <li><a href="#" onclick="showContent('server-setup')"># server-setup</a></li>
+            <li><a href="#" onclick="showContent('future-plans')"># future-plans</a></li>
+            <li><a href="#" onclick="showContent('issues')"># issues</a></li>
+        </ul>
+    </div>
+    <div class="category">
+        <h2>Linux</h2>
+        <ul class="channel-list">
+            <li><a href="#" onclick="showContent('ubuntu')"># ubuntu</a></li>
+            <li><a href="#" onclick="showContent('kali-linux')"># kali-linux</a></li>
+            <li><a href="#" onclick="showContent('arch-linux')"># arch-linux</a></li>
+            <li><a href="#" onclick="showContent('red-hat')"># red-hat</a></li>
+            <li><a href="#" onclick="showContent('tails')"># tails</a></li>
+        </ul>
+    </div>
+    <div class="category">
+        <h2>Windows</h2>
+        <ul class="channel-list">
+            <li><a href="#" onclick="showContent('windows-issues')"># windows-issues</a></li>
+            <li><a href="#" onclick="showContent('windows-customization')"># windows-customization</a></li>
+        </ul>
+    </div>
+    <div class="category">
+        <h2>Mac OS</h2>
+        <ul class="channel-list">
+            <li><a href="#" onclick="showContent('mac-issues')"># mac-issues</a></li>
+        </ul>
+    </div>
+    <div id="content"></div>
+
+    <script>
+        function showContent(channel) {
+            let content = document.getElementById('content');
+            content.style.display = 'block';
+            switch(channel) {
+                case 'server-setup':
+                    content.innerHTML = `
+                        <h3>Server Setup</h3>
+                        <p><strong>Explanation:</strong> Learn to configure and manage servers.</p>
+                        <p><strong>Installation:</strong> Use a tool like Apache or Nginx. Install Apache on Ubuntu with: <code>sudo apt update && sudo apt install apache2</code></p>
+                        <p><strong>Usage:</strong> Start the server with <code>sudo systemctl start apache2</code> and access it via your browser.</p>
+                    `;
+                    break;
+                case 'future-plans':
+                    content.innerHTML = `<h3>Future Plans</h3><p>Discuss upcoming server updates and features.</p>`;
+                    break;
+                case 'issues':
+                    content.innerHTML = `<h3>Issues</h3><p>Troubleshoot common server problems.</p>`;
+                    break;
+                case 'ubuntu':
+                    content.innerHTML = `
+                        <h3>Ubuntu</h3>
+                        <p><strong>Explanation:</strong> A popular Linux distribution for desktops and servers.</p>
+                        <p><strong>Installation:</strong> Download from ubuntu.com, create a bootable USB, and follow the installer.</p>
+                        <p><strong>Usage:</strong> Update with <code>sudo apt update && sudo apt upgrade</code>.</p>
+                    `;
+                    break;
+                case 'kali-linux':
+                    content.innerHTML = `
+                        <h3>Kali Linux</h3>
+                        <p><strong>Explanation:</strong> A security-focused Linux distro for penetration testing.</p>
+                        <p><strong>Installation:</strong> Download from kali.org, use a bootable USB, and install.</p>
+                        <p><strong>Usage:</strong> Run tools like Nmap with <code>nmap -sV target</code>.</p>
+                    `;
+                    break;
+                case 'arch-linux':
+                    content.innerHTML = `
+                        <h3>Arch Linux</h3>
+                        <p><strong>Explanation:</strong> A rolling-release Linux distro for advanced users.</p>
+                        <p><strong>Installation:</strong> Follow the Arch Wiki guide with a bootable USB.</p>
+                        <p><strong>Usage:</strong> Update with <code>sudo pacman -Syu</code>.</p>
+                    `;
+                    break;
+                case 'red-hat':
+                    content.innerHTML = `
+                        <h3>Red Hat</h3>
+                        <p><strong>Explanation:</strong> An enterprise Linux distribution.</p>
+                        <p><strong>Installation:</strong> Purchase and download from redhat.com, then use the installer.</p>
+                        <p><strong>Usage:</strong> Manage with <code>yum update</code>.</p>
+                    `;
+                    break;
+                case 'tails':
+                    content.innerHTML = `
+                        <h3>Tails</h3>
+                        <p><strong>Explanation:</strong> A privacy-focused OS that routes traffic through Tor.</p>
+                        <p><strong>Installation:</strong> Download from tails.net, create a bootable USB.</p>
+                        <p><strong>Usage:</strong> Boot from USB for anonymous browsing.</p>
+                    `;
+                    break;
+                case 'windows-issues':
+                    content.innerHTML = `<h3>Windows Issues</h3><p>Troubleshoot Windows OS problems.</p>`;
+                    break;
+                case 'windows-customization':
+                    content.innerHTML = `<h3>Windows Customization</h3><p>Customize Windows settings and appearance.</p>`;
+                    break;
+                case 'mac-issues':
+                    content.innerHTML = `<h3>Mac Issues</h3><p>Resolve common Mac OS problems.</p>`;
+                    break;
+                default:
+                    content.innerHTML = `<h3>Content Not Available</h3><p>More details coming soon!</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
